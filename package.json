@@ -19,7 +19,24 @@
 				"command": "vscode-acmicpc.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+		"viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "acmicpc",
+                    "title": "Acmicpc",
+                    "icon": "resources/acmicpc.svg"
+                }
+            ]
+		},
+		"views": {
+            "acmicpc": [
+                {
+                    "id": "acmicpcExplorer",
+                    "name": "Problems"
+                }
+            ]
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run package",

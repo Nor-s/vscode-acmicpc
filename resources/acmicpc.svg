@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256.0px"
+   height="256.0px"
+   viewBox="0 0 256.0 256.0"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="acmicpc.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview125"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="2.1997092"
+     inkscape:cx="85.324212"
+     inkscape:cy="81.51211"
+     inkscape:window-width="1868"
+     inkscape:window-height="1091"
+     inkscape:window-x="584"
+     inkscape:window-y="438"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid131" />
+  </sodipodi:namedview>
+  <defs
+     id="defs120">
+    <rect
+       x="-25"
+       y="40"
+       width="150"
+       height="200"
+       id="rect50262" />
+  </defs>
+  <g
+     inkscape:label="레이어 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:186.585px;line-height:0.85;font-family:'Microsoft Yi Baiti';-inkscape-font-specification:'Microsoft Yi Baiti Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:4.14124"
+       x="9.3873892"
+       y="131.88773"
+       id="text2358"
+       transform="scale(0.61317364,1.6308594)"><tspan
+         sodipodi:role="line"
+         id="tspan2356"
+         x="9.3873892"
+         y="131.88773"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:186.585px;font-family:'Microsoft Yi Baiti';-inkscape-font-specification:'Microsoft Yi Baiti Bold';stroke-width:4.14124" /></text>
+    <text
+       xml:space="preserve"
+       id="text50260"
+       style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:D2Coding;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect50262);-inkscape-font-specification:D2Coding;font-stretch:normal;font-variant:normal" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:212.568px;line-height:1.25;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.31401"
+       x="-6.9537549"
+       y="191.8551"
+       id="text2056"
+       transform="scale(0.9979046,1.0020998)"><tspan
+         sodipodi:role="line"
+         id="tspan2054"
+         x="-6.9537549"
+         y="191.8551"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';stroke-width:5.31401">/</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:212.568px;line-height:1.25;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.31401"
+       x="46.775864"
+       y="192.05292"
+       id="text2056-5"
+       transform="scale(0.9979046,1.0020998)"><tspan
+         sodipodi:role="line"
+         id="tspan2054-4"
+         x="46.775864"
+         y="192.05292"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';stroke-width:5.31401">&lt;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:212.568px;line-height:1.25;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';fill:#000000;fill-opacity:1;stroke:none;stroke-width:5.31401"
+       x="156.18362"
+       y="192.04181"
+       id="text2056-5-9"
+       transform="scale(0.9979046,1.0020998)"><tspan
+         sodipodi:role="line"
+         id="tspan2054-4-1"
+         x="156.18362"
+         y="192.04181"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:D2Coding;-inkscape-font-specification:'D2Coding Bold';stroke-width:5.31401">&gt;</tspan></text>
+  </g>
+</svg>
