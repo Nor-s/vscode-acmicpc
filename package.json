@@ -17,8 +17,9 @@
     "contributes": {
         "commands": [
             {
-                "command": "vscode-acmicpc.helloWorld",
-                "title": "Hello World"
+                "command": "acmicpc.previewProblem",
+                "title": "Preview Problem",
+                "category": "Acmicpc"
             }
         ],
         "viewsContainers": {
@@ -40,6 +41,38 @@
                 }
             ]
         },
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "acmicpc.previewProblem",
+                    "when": "view == amicpc-sidebar && viewItem =~ /problem*/",
+                    "group": "acmicpc@1"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "acmicpc.previewProblem",
+                    "when": "never"
+                }
+            ],
+            "editor/context": [
+                {
+                    "submenu": "acmicpc.editorAction"
+                }
+            ],
+            "acmicpc.editorAction": [
+                {
+                    "command": "acmicpc.previewProblem",
+                    "group": "acmicpc@4"
+                }
+            ]
+        },
+        "submenus": [
+            {
+                "id": "acmicpc.editorAction",
+                "label": "Acmicpc"
+            }
+        ],
         "configuration": [
             {
                 "title": "acmicpc workbook",

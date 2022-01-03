@@ -35,6 +35,41 @@ class ExplorerNodeManager implements Disposable {
         this.classNodeMaps = await getClassNodeMap();
         this.stepNodeMaps = await getStepNodeMap();
         this.workbookNodeMaps = await getWorkbookNodeMap();
+
+        // Set All
+        for (const key of this.classNodeMaps.keys()) {
+            const mp = this.classNodeMaps.get(key);
+            if (mp != undefined) {
+                for (const it of mp.keys()) {
+                    const val = mp.get(it);
+                    if (val != undefined) {
+                        this.explorerNodeMap.set(it, val);
+                    }
+                }
+            }
+        }
+        for (const key of this.stepNodeMaps.keys()) {
+            const mp = this.stepNodeMaps.get(key);
+            if (mp != undefined) {
+                for (const it of mp.keys()) {
+                    const val = mp.get(it);
+                    if (val != undefined) {
+                        this.explorerNodeMap.set(it, val);
+                    }
+                }
+            }
+        }
+        for (const key of this.workbookNodeMaps.keys()) {
+            const mp = this.workbookNodeMaps.get(key);
+            if (mp != undefined) {
+                for (const it of mp.keys()) {
+                    const val = mp.get(it);
+                    if (val != undefined) {
+                        this.explorerNodeMap.set(it, val);
+                    }
+                }
+            }
+        }
     }
 
     public getRootNodes(): AcmicpcNode[] {

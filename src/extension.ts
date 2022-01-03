@@ -1,7 +1,10 @@
 import * as vscode from "vscode";
+import * as show from "./commands/show";
 import { explorerNodeManager } from "./explorer/explorerNodeManager";
 import { AcmicpcNode } from "./explorer/acmicpcNode";
 import { acmicpcTreeDataProvider } from "./explorer/acmicpcTreeDataProvider";
+import { acmicpcChannel } from "./acmicpcChannel";
+import { DialogType, promptForOpenOutputChannel } from "./utils/uiUtils";
 
 export function activate(context: vscode.ExtensionContext) {
     // classList(1);
@@ -10,13 +13,25 @@ export function activate(context: vscode.ExtensionContext) {
     acmicpcTreeDataProvider.refresh();
 
     acmicpcTreeDataProvider.initialize(context);
-
-    context.subscriptions.push(
-        explorerNodeManager,
-        vscode.window.createTreeView("acmicpc-sidebar", {
-            treeDataProvider: acmicpcTreeDataProvider,
-            showCollapseAll: true,
-        })
-    );
+    try {
+        context.subscriptions.push(
+            acmicpcChannel,
+            explorerNodeManager,
+            vscode.window.createTreeView("acmicpc-sidebar", {
+                treeDataProvider: acmicpcTreeDataProvider,
+                showCollapseAll: true,
+            }),
+            vscode.commands.registerCommand(
+                "acmicpc.previewProblem",
+                (node: AcmicpcNode) => show.previewProblem(node)
+            )
+        );
+    } catch (error: any) {
+        acmicpcChannel.appendLine(error.toString());
+        promptForOpenOutputChannel(
+            "Extension initialization failed. Please open output channel for details.",
+            DialogType.error
+        );
+    }
 }
 export function deactivate() {}
