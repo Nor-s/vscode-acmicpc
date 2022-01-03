@@ -87,6 +87,26 @@
                         "default": false,
                         "description": "Enable extension (use this to provide workspace-specific setup)"
                     },
+                    "acmicpc.class.enabled": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Enable class"
+                    },
+                    "acmicpc.class.range.min": {
+                        "type": "number",
+                        "default": 1,
+                        "description": "min class"
+                    },
+                    "acmicpc.class.range.max": {
+                        "type": "number",
+                        "default": 10,
+                        "description": "max class"
+                    },
+                    "acmicpc.step.enabled": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Enable step"
+                    },
                     "acmicpc.workbookList": {
                         "type": "array",
                         "default": [
