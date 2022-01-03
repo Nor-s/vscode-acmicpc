@@ -27,7 +27,6 @@ export const defaultProblem: IProblem = {
 };
 
 export enum Category {
-  All = "All",
   Class = "Class",
   Step = "Step",
   Workbook = "Workbook",

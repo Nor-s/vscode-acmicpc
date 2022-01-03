@@ -9,63 +9,43 @@ import { acmicpcChannel } from "../acmicpcChannel";
 import { IProblem, IQuickItemEx, ProblemState } from "../shared";
 
 import {
-    acmicpcPreviewProvider,
-    IDescription,
+  acmicpcPreviewProvider,
+  IDescription,
 } from "../webview/acmicpcPreviewProvider";
 import axios from "axios";
 import cheerio from "cheerio";
 
 export async function previewProblem(
-    input: IProblem,
-    isSideMode: boolean = false
+  input: IProblem,
+  isSideMode: boolean = true
 ): Promise<void> {
-    let node: IProblem = input;
-    acmicpcPreviewProvider.show(
-        await getProblemData(node.id),
-        node,
-        isSideMode
-    );
+  let node: IProblem = input;
+  acmicpcPreviewProvider.show(await getProblemData(node.id), node, isSideMode);
 }
 
 async function getProblemData(no: string): Promise<IDescription> {
-    const url = "https://www.acmicpc.net/problem/" + no;
-    try {
-        const html = await axios.get(url);
-        const $ = cheerio.load(html.data);
-
-        const $body = $("#problem-body").html();
-        const bodyHtml = $body;
-        if (bodyHtml != undefined) {
-            return {
-                title: $("title").text().trim(),
-                url: url,
-                body: bodyHtml,
-            };
-        }
-    } catch (error: any) {
-        vscode.window.showErrorMessage(error);
+  const url = "https://www.acmicpc.net/problem/" + no;
+  try {
+    const html = await axios.get(url);
+    const $ = cheerio.load(html.data);
+    $("img").each(function () {
+      var old_src = $(this).attr("src");
+      if (old_src != undefined && !/^(http|https):\/\//.test(old_src)) {
+        let new_src = "https://www.acmicpc.net" + old_src;
+        $(this).attr("src", new_src);
+      }
+    });
+    const $body = $("#problem-body").html();
+    const bodyHtml = $body;
+    if (bodyHtml != undefined) {
+      return {
+        title: $("title").text().trim(),
+        url: url,
+        body: bodyHtml,
+      };
     }
-    return { url: "", title: "", body: "" };
-    // const raw = await fetch(url).then((res) => res.text());
-    // const $raw = $(raw);
-    // $raw.find("img").attr("src", (i, v) =>
-    //     v.match(/^\//) ? "https://www.acmicpc.net" + v : v
-    // );
-
-    // const descript = $raw
-    //     .find("#description, #input, #output")
-    //     .toArray()
-    //     .map((v) => $(v).html().replace(/\t/g, ""))
-    //     .join("\n");
-    // const cases = $raw
-    //     .find(".sampledata")
-    //     .toArray()
-    //     .map((v) => $(v).text().replace(/\n$/, ""))
-    //     .chunk(2);
-    // const title = $raw.find("#problem_title").text();
-    // return {
-    //     descript,
-    //     cases,
-    //     title,
-    // };
+  } catch (error: any) {
+    vscode.window.showErrorMessage(error);
+  }
+  return { url: "", title: "", body: "" };
 }
