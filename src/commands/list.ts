@@ -49,8 +49,8 @@ export async function getClassNodeMap(): Promise<
     for (var i = lo; i <= hi; i++) {
         tmp.push(getClassList(i));
     }
-    for (var j = lo; j <= hi; j++) {
-        ret.set("Class " + j, await tmp[j]);
+    for (const mp of tmp) {
+        ret.set("Class " + lo++, await mp);
     }
     return ret;
 }
