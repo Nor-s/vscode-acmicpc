@@ -2,7 +2,7 @@
 // Licensed under the MIT license.
 
 import * as _ from "lodash";
-import { Disposable, workspace } from "vscode";
+import { Disposable } from "vscode";
 import { AcmicpcNode } from "./acmicpcNode";
 import { Category, defaultProblem } from "../shared";
 import {
@@ -10,7 +10,9 @@ import {
     getClassNodeMap,
     getWorkbookNodeMap,
     solvedManager,
+    requestCount,
 } from "../commands/list";
+import { acmicpcChannel } from "../acmicpcChannel";
 
 class ExplorerNodeManager implements Disposable {
     private classNodeMaps: Map<string, Map<string, AcmicpcNode>> = new Map<
@@ -25,74 +27,45 @@ class ExplorerNodeManager implements Disposable {
         string,
         Map<string, AcmicpcNode>
     >();
-    private isEnableClass = workspace
-        .getConfiguration()
-        .get<boolean>("acmicpc.class.enabled");
-    private isEnableStep = workspace
-        .getConfiguration()
-        .get<boolean>("acmicpc.step.enabled");
 
     public async refreshCache(): Promise<void> {
         this.dispose();
         solvedManager.dispose();
         await solvedManager.setSolved();
-        let classNodeMaps:
-            | Promise<Map<string, Map<string, AcmicpcNode>>>
-            | undefined;
-        let stepNodeMaps:
-            | Promise<Map<string, Map<string, AcmicpcNode>>>
-            | undefined;
-        if (this.isEnableClass) {
-            classNodeMaps = getClassNodeMap();
-        }
-        if (this.isEnableStep) {
-            stepNodeMaps = getStepNodeMap();
-        }
+        let classNodeMaps = getClassNodeMap();
+        let stepNodeMaps = getStepNodeMap();
         let workbookNodeMaps = getWorkbookNodeMap();
 
-        if (this.isEnableClass && classNodeMaps != undefined) {
-            this.classNodeMaps = await classNodeMaps;
-        }
-        if (this.isEnableStep && stepNodeMaps != undefined) {
-            this.stepNodeMaps = await stepNodeMaps;
-        }
+        this.classNodeMaps = await classNodeMaps;
+        this.stepNodeMaps = await stepNodeMaps;
         this.workbookNodeMaps = await workbookNodeMaps;
+        acmicpcChannel.appendLine("request count:" + requestCount.toString());
     }
 
     public getRootNodes(): AcmicpcNode[] {
-        const ret: AcmicpcNode[] = [];
-        if (this.isEnableClass) {
-            ret.push(
-                new AcmicpcNode(
-                    Object.assign({}, defaultProblem, {
-                        id: Category.Class,
-                        name: Category.Class,
-                    }),
-                    false
-                )
-            );
-        }
-        if (this.isEnableStep) {
-            ret.push(
-                new AcmicpcNode(
-                    Object.assign({}, defaultProblem, {
-                        id: Category.Step,
-                        name: Category.Step,
-                    }),
-                    false
-                )
-            );
-        }
-        ret.push(
+        return [
+            new AcmicpcNode(
+                Object.assign({}, defaultProblem, {
+                    id: Category.Class,
+                    name: Category.Class,
+                }),
+                false
+            ),
+            new AcmicpcNode(
+                Object.assign({}, defaultProblem, {
+                    id: Category.Step,
+                    name: Category.Step,
+                }),
+                false
+            ),
             new AcmicpcNode(
                 Object.assign({}, defaultProblem, {
                     id: Category.Workbook,
                     name: Category.Workbook,
                 }),
                 false
-            )
-        );
-        return ret;
+            ),
+        ];
     }
 
     public getAllClassNodes(): AcmicpcNode[] {

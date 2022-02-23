@@ -96,7 +96,10 @@ async function getStepList() {
     const url = "https://www.acmicpc.net/step";
     let stepList: string[] = [];
     try {
-        const html = await axios.get(url);
+        requestCount++;
+        const html = await axios.get(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+        });
         const $ = cheerio.load(html.data);
         const $bodyList = $("div.table-responsive table")
             .children("tbody")
@@ -120,7 +123,10 @@ async function getWorkbook(
     const problems: Map<string, AcmicpcNode> = new Map<string, AcmicpcNode>();
     let header: string = "";
     try {
-        const html = await axios.get(url);
+        requestCount++;
+        const html = await axios.get(url, {
+            headers: { "User-Agent": "Mozilla/5.0" },
+        });
         const $ = cheerio.load(html.data);
         header = $("title").first().text().trim();
         const $bodyList = $("div.table-responsive table")
@@ -159,6 +165,7 @@ async function getClassList(
     let state: ProblemState = ProblemState.AC;
     const problems: Map<string, AcmicpcNode> = new Map<string, AcmicpcNode>();
     try {
+        requestCount++;
         const response = await axios.get(
             "https://solved.ac/api/v3/search/problem",
             {
@@ -195,6 +202,7 @@ async function getSolveProblem() {
         let count: number = 0;
         let pageidx: number = 1;
         do {
+            requestCount++;
             const response = await axios.get(
                 "https://solved.ac/api/v3/search/problem",
                 {
@@ -225,3 +233,4 @@ async function getSolveProblem() {
 }
 
 export const solvedManager: SolvedManager = new SolvedManager();
+export let requestCount = 0;
