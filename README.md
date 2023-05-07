@@ -1,6 +1,9 @@
 # vscode-acmicpc
 
--   vscode-leetcode 의 코드를 백준에 맞게 수정하였다.
+-   [vscode-leetcode](https://github.com/LeetCode-OpenSource/vscode-leetcode) 의 코드를 수정하여 백준 문제를 볼 수 있게 하였다.
+
+![sample](https://user-images.githubusercontent.com/40836757/236687135-cbd7b1cd-f61f-4e54-8f87-c667f1ffd744.gif)
+
 
 ## Features
 
